@@ -4,7 +4,7 @@ version: "3.7"
 
 services:
   dspace-cli:
-    image: "dspace/dspace-cli:${DSPACE_VERSION}"
+    image: unam/dspace-cli:latest
     container_name: dspace-cli
     environment:
       dspace__P__dir: /dspace
