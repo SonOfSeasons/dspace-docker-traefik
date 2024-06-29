@@ -29,7 +29,7 @@ services:
       # from the host machine. This IP range MUST correspond to the 'dspacenet' subnet defined above.
       # proxies__P__trusted__P__ipranges: '172.24.0'
       handle__P__prefix: 10598
-    image: dspace/dspace:${DSPACE_VERSION}
+    image: unam/dspace:latest
     labels:
       - traefik.enable=true
       - traefik.docker.network=${PROXY_NETWORK}
@@ -72,7 +72,8 @@ services:
     container_name: dspacedb
     environment:
       PGDATA: /pgdata
-    image: dspace/dspace-postgres-pgcrypto
+      POSTGRES_PASSWORD: dspace
+    image: unam/dspace-postgres-pgcrypto:latest
     networks:
       dspacenet:
     volumes:
@@ -82,7 +83,7 @@ services:
   dspacesolr:
     container_name: dspacesolr
     # Uses official Solr image at https://hub.docker.com/_/solr/
-    image: solr:8.11-slim
+    image: unam/dspace-solr:latest
     # Needs main 'dspace' container to start first to guarantee access to solr_configs
     depends_on:
       - dspace
