@@ -7,7 +7,7 @@ networks:
 
 services:
   dspace-angular:
-    image: dspace/dspace-angular:${DSPACE_VERSION}
+    image: unam/dspace-angular:latest
     container_name: dspace-angular
     volumes:
       #- ./mount/app/config/config.production.yaml:/app/config/config.production.yaml
